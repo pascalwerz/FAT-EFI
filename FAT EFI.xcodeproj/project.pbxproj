@@ -1,0 +1,273 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		501E545A1D73844500B213BA /* cpu_names.c in Sources */ = {isa = PBXBuildFile; fileRef = 501E54591D73844500B213BA /* cpu_names.c */; };
+		504A702C1D6431ED004E44D1 /* include in Resources */ = {isa = PBXBuildFile; fileRef = 504A702B1D6431ED004E44D1 /* include */; };
+		50DD20FB1D63313D00E44C0C /* FAT EFI.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DD20FA1D63313D00E44C0C /* FAT EFI.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		501E54591D73844500B213BA /* cpu_names.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpu_names.c; sourceTree = "<group>"; };
+		501E545B1D73844A00B213BA /* cpu_names.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cpu_names.h; sourceTree = "<group>"; };
+		504A702B1D6431ED004E44D1 /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; path = include; sourceTree = "<group>"; };
+		50DD20D71D63301700E44C0C /* FAT EFI.hopperLoader */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FAT EFI.hopperLoader"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50DD20DA1D63301700E44C0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50DD20F91D63313D00E44C0C /* FAT EFI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FAT EFI.h"; sourceTree = "<group>"; };
+		50DD20FA1D63313D00E44C0C /* FAT EFI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FAT EFI.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		50DD20D41D63301700E44C0C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		50DD20CE1D63301700E44C0C = {
+			isa = PBXGroup;
+			children = (
+				504A702B1D6431ED004E44D1 /* include */,
+				50DD20D91D63301700E44C0C /* FAT EFI */,
+				50DD20D81D63301700E44C0C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		50DD20D81D63301700E44C0C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				50DD20D71D63301700E44C0C /* FAT EFI.hopperLoader */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		50DD20D91D63301700E44C0C /* FAT EFI */ = {
+			isa = PBXGroup;
+			children = (
+				50DD20DA1D63301700E44C0C /* Info.plist */,
+				50DD20F91D63313D00E44C0C /* FAT EFI.h */,
+				50DD20FA1D63313D00E44C0C /* FAT EFI.m */,
+				501E545B1D73844A00B213BA /* cpu_names.h */,
+				501E54591D73844500B213BA /* cpu_names.c */,
+			);
+			path = "FAT EFI";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		50DD20D61D63301700E44C0C /* FAT EFI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50DD20DD1D63301700E44C0C /* Build configuration list for PBXNativeTarget "FAT EFI" */;
+			buildPhases = (
+				50DD20D31D63301700E44C0C /* Sources */,
+				50DD20D41D63301700E44C0C /* Frameworks */,
+				50DD20D51D63301700E44C0C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FAT EFI";
+			productName = "FAT EFI";
+			productReference = 50DD20D71D63301700E44C0C /* FAT EFI.hopperLoader */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		50DD20CF1D63301700E44C0C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = xvi;
+				TargetAttributes = {
+					50DD20D61D63301700E44C0C = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 50DD20D21D63301700E44C0C /* Build configuration list for PBXProject "FAT EFI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 50DD20CE1D63301700E44C0C;
+			productRefGroup = 50DD20D81D63301700E44C0C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				50DD20D61D63301700E44C0C /* FAT EFI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		50DD20D51D63301700E44C0C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				504A702C1D6431ED004E44D1 /* include in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		50DD20D31D63301700E44C0C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50DD20FB1D63313D00E44C0C /* FAT EFI.m in Sources */,
+				501E545A1D73844500B213BA /* cpu_names.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		50DD20DB1D63301700E44C0C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/include/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		50DD20DC1D63301700E44C0C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/include/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		50DD20DE1D63301700E44C0C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "FAT EFI/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.rpc1.xvi.FAT-EFI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = hopperLoader;
+			};
+			name = Debug;
+		};
+		50DD20DF1D63301700E44C0C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "FAT EFI/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.rpc1.xvi.FAT-EFI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = hopperLoader;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		50DD20D21D63301700E44C0C /* Build configuration list for PBXProject "FAT EFI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50DD20DB1D63301700E44C0C /* Debug */,
+				50DD20DC1D63301700E44C0C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50DD20DD1D63301700E44C0C /* Build configuration list for PBXNativeTarget "FAT EFI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50DD20DE1D63301700E44C0C /* Debug */,
+				50DD20DF1D63301700E44C0C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 50DD20CF1D63301700E44C0C /* Project object */;
+}
