@@ -98,6 +98,7 @@ id<HPHopperServices> _services;
     NSUInteger dataLength = [data length];
 
     // get the FAT EFI header
+    if (dataBytes == NULL || dataLength < sizeof(struct fatefi_header)) return nil;
     memcpy(&header, dataBytes, sizeof(struct fatefi_header));
 
     if (header.magic == FATEFI_CIGAM) needToSwap = YES;
@@ -113,31 +114,34 @@ id<HPHopperServices> _services;
     {
         for (int i = 0; i < header.nfat_arch; i++)
         {
-            memcpy(&arch, dataBytes + sizeof(struct fatefi_header) + i * sizeof(struct fatefi_arch), sizeof(struct fatefi_arch));
-            if (needToSwap)
+            if (dataLength >= sizeof(struct fatefi_header) + (i+1) * sizeof(struct fatefi_arch))
             {
-                arch.cputype = CFSwapInt32(arch.cputype);
-                arch.cpusubtype = CFSwapInt32(arch.cpusubtype);
-                arch.offset = CFSwapInt32(arch.offset);
-                arch.size = CFSwapInt32(arch.size);
-                arch.align = CFSwapInt32(arch.align);
+                memcpy(&arch, dataBytes + sizeof(struct fatefi_header) + i * sizeof(struct fatefi_arch), sizeof(struct fatefi_arch));
+                if (needToSwap)
+                {
+                    arch.cputype = CFSwapInt32(arch.cputype);
+                    arch.cpusubtype = CFSwapInt32(arch.cpusubtype);
+                    arch.offset = CFSwapInt32(arch.offset);
+                    arch.size = CFSwapInt32(arch.size);
+                    arch.align = CFSwapInt32(arch.align);
+                }
+
+                // sanity check: ensure PE is completely enclosed in the file
+                if (arch.offset < dataLength && (arch.offset + arch.size) <= dataLength)
+                {
+                    // this is a composite loader
+                    detectedType.compositeFile = YES;
+                    detectedType.fileDescription = @"FAT EFI binary";
+                    detectedType.shortDescriptionString = @"FAT EFI";
+
+                    // build list that will be displayed as a choice for user
+                    [list addObject:[NSString stringWithUTF8String:find_cpu_name(arch.cputype, arch.cpusubtype)]];
+
+                }
             }
-
-            // sanity check: ensure PE is completely enclosed in the file
-            if (arch.offset < dataLength && (arch.offset + arch.size) <= dataLength)
-            {
-                // this is a composite loader
-                detectedType.compositeFile = YES;
-                detectedType.fileDescription = @"FAT EFI binary";
-                detectedType.shortDescriptionString = @"FAT EFI";
-
-                // build list that will be displayed as a choice for user
-                [list addObject:[NSString stringWithUTF8String:find_cpu_name(arch.cputype, arch.cpusubtype)]];
-
-            }
+            // add the choice list to the returned detected type
+            detectedType.additionalParameters = @[[_services stringListComponentWithLabel:@"CPU" andList:list]];
         }
-        // add the choice list to the returned detected type
-        detectedType.additionalParameters = @[[_services stringListComponentWithLabel:@"CPU" andList:list]];
     }
 
     return @[detectedType];
@@ -177,35 +181,41 @@ id<HPHopperServices> _services;
     NSData * result = nil;
 
     // get the header
-    memcpy(&header, dataBytes, sizeof(struct fatefi_header));
-    if (header.magic == FATEFI_CIGAM) needToSwap = YES;
-
-    if (needToSwap)
+    if (dataBytes != NULL && dataLength >= sizeof(struct fatefi_header))
     {
-        header.magic = CFSwapInt32(header.magic);
-        header.nfat_arch = CFSwapInt32(header.nfat_arch);
+        memcpy(&header, dataBytes, sizeof(struct fatefi_header));
+        if (header.magic == FATEFI_CIGAM) needToSwap = YES;
+
+        if (needToSwap)
+        {
+            header.magic = CFSwapInt32(header.magic);
+            header.nfat_arch = CFSwapInt32(header.nfat_arch);
+        }
+
+        if (header.magic != FATEFI_MAGIC) return nil;
+
+        // get the chosen PE
+        if (dataLength >= sizeof(struct fatefi_header) + (index+1) * sizeof(struct fatefi_arch))
+        {
+            memcpy(&arch, dataBytes + sizeof(struct fatefi_header) + index * sizeof(struct fatefi_arch), sizeof(struct fatefi_arch));
+            if (needToSwap)
+            {
+                arch.cputype = CFSwapInt32(arch.cputype);
+                arch.cpusubtype = CFSwapInt32(arch.cpusubtype);
+                arch.offset = CFSwapInt32(arch.offset);
+                arch.size = CFSwapInt32(arch.size);
+                arch.align = CFSwapInt32(arch.align);
+            }
+
+            // sanity check: ensure PE is completely enclosed in the file
+            if (arch.offset < dataLength && (arch.offset + arch.size) <= dataLength)
+            {
+                result = [data subdataWithRange:NSMakeRange(arch.offset, arch.size)];
+                *adjustOffset = 0; // ?
+            }
+        }
+
     }
-
-    if (header.magic != FATEFI_MAGIC) return nil;
-
-    // get the chosen PE
-    memcpy(&arch, dataBytes + sizeof(struct fatefi_header) + index * sizeof(struct fatefi_arch), sizeof(struct fatefi_arch));
-    if (needToSwap)
-    {
-        arch.cputype = CFSwapInt32(arch.cputype);
-        arch.cpusubtype = CFSwapInt32(arch.cpusubtype);
-        arch.offset = CFSwapInt32(arch.offset);
-        arch.size = CFSwapInt32(arch.size);
-        arch.align = CFSwapInt32(arch.align);
-    }
-
-    // sanity check: ensure PE is completely enclosed in the file
-    if (arch.offset < dataLength && (arch.offset + arch.size) <= dataLength)
-    {
-        result = [data subdataWithRange:NSMakeRange(arch.offset, arch.size)];
-        *adjustOffset = 0; // ?
-    }
-
     return result;
 }
 
